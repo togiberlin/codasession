@@ -21,6 +21,7 @@ What problems this web platform solves:
 - [Node.js](https://nodejs.org/en/) server side platform
 - [Express.js](http://expressjs.com/) web framework
 - [MongoDB](https://www.mongodb.com/what-is-mongodb) NoSQL database
+- [Handlebars](http://handlebarsjs.com/) HTML templating language
 
 ## Prerequisites
 - Install a [Node Version Manager (NVM)](https://github.com/creationix/nvm)
@@ -28,4 +29,7 @@ What problems this web platform solves:
 - Download and install [Robo 3T](https://robomongo.org/)
 
 ## Setup
+[TBD]
+
+## Improvement Points
 [TBD]
