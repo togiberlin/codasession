@@ -1,5 +1,13 @@
-# CodeSession
-> CodeSession enables you to have real-time coding sessions with video calls.
+# CodaSession
+In simple words, CodaSession is like GoogleDocs for programmers. 
+It allows you to work collaboratively on code with fellow engineers - no matter
+where you live. For communication, CodaSession allows users to use a chat window.
+Furthermore, it is very easy to exchange ideas via integrated video calls.
+
+> CodaSession is meant to reduce barriers for effective remote work.
+
+This private project is meant to be an exercise on WebSockets and real-time 
+page updates.
 
 ## Purpose
 [TBD: Description. Remote work is the future]
@@ -12,7 +20,7 @@ What problems this web platform solves:
 ## Technology Stack
 - [Node.js](https://nodejs.org/en/) server side platform
 - [Express.js](http://expressjs.com/) web framework
-- [MongoDB](https://www.mongodb.com/what-is-mongodb) NoSQL DB
+- [MongoDB](https://www.mongodb.com/what-is-mongodb) NoSQL database
 
 ## Prerequisites
 - Install a [Node Version Manager (NVM)](https://github.com/creationix/nvm)
