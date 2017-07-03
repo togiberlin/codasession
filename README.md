@@ -1,4 +1,6 @@
 # CodaSession
+![Remote work](http://i.imgur.com/6jxMK1n.png)
+
 In simple words, CodaSession is like GoogleDocs for programmers. 
 It allows you to work collaboratively on code with fellow engineers - no matter
 where you live. For communication, CodaSession allows users to use a chat window.
@@ -22,14 +24,18 @@ What problems this web platform solves:
 - [Express.js](http://expressjs.com/) web framework
 - [MongoDB](https://www.mongodb.com/what-is-mongodb) NoSQL database
 - [Handlebars](http://handlebarsjs.com/) HTML templating language
+- [jQuery](https://jquery.com/) JavaScript library
+- [Bootstrap](http://getbootstrap.com/) HTML and CSS template library
 
 ## Prerequisites
 - Install a [Node Version Manager (NVM)](https://github.com/creationix/nvm)
-- Download and install Node.js via ```$ nvm install 8.1.3```. Note: as of July 2017, 8.1.3 is the latest Node.js version.
-- Download and install [Robo 3T](https://robomongo.org/)
+- Download and install Node.js from [here](https://nodejs.org/en/)
+- Alternatively, you can download and install Node.js via ```$ nvm install 8.1.3``` Note: as of July 2017, 8.1.3 is the latest Node.js version.
+- Download and install [Robo 3T](https://robomongo.org/) GUI for exploring the database content
 
 ## Setup
-[TBD]
+- Run ```npm start``` to start the web server
+- Open your web browser and go to ```localhost:3000```
 
 ## Improvement Points
 [TBD]
