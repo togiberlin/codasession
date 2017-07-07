@@ -1,14 +1,14 @@
 # CodaSession
 ![Remote work](http://i.imgur.com/6jxMK1n.png)
 
-In simple words, CodaSession is like GoogleDocs for programmers. 
+In simple words, CodaSession is like GoogleDocs for programmers.
 It allows you to work collaboratively on code with fellow engineers - no matter
 where you live. For communication, CodaSession allows users to use a chat window.
 Furthermore, it is very easy to exchange ideas via integrated video calls.
 
 > CodaSession is meant to reduce barriers for effective remote work.
 
-This private project is meant to be an exercise on WebSockets and real-time 
+This private project is meant to be an exercise on WebSockets and real-time
 page updates.
 
 ## Purpose
@@ -25,7 +25,7 @@ What problems this web platform solves:
 - [MongoDB](https://www.mongodb.com/what-is-mongodb) NoSQL database
 - [Handlebars](http://handlebarsjs.com/) HTML templating language
 - [jQuery](https://jquery.com/) JavaScript library
-- [Bootstrap](http://getbootstrap.com/) HTML and CSS template library
+- [Bootstrap](http://getbootstrap.com/) ready to use HTML and CSS component kit
 
 ## Prerequisites
 - Install a [Node Version Manager (NVM)](https://github.com/creationix/nvm)
@@ -34,8 +34,12 @@ What problems this web platform solves:
 - Download and install [Robo 3T](https://robomongo.org/) GUI for exploring the database content
 
 ## Setup
+- Run ```npm install``` to install all dependencies
 - Run ```npm start``` to start the web server
 - Open your web browser and go to ```localhost:3000```
+
+## Deployment
+[Deployment to Heroku TBD]
 
 ## Improvement Points
 [TBD]
