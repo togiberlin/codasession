@@ -4,16 +4,21 @@
   <form method="post">
     <div class="form-group">
       <label>Name</label>
-      <input class="form-control" placeholder="Your name">
+      <input class="form-control" name="name" placeholder="Your name" value={{name}}>
     </div>
     <div class="form-group">
       <label>Email address</label>
-      <input type="email" class="form-control" placeholder="Your email">
+      <input type="email" name="email" class="form-control" placeholder="Your email" value={{email}}>
     </div>
     <div class="form-group">
       <label>Message</label>
-      <textarea class="form-control" rows="5"></textarea>
+      <textarea class="form-control" name="message" rows="5">{{message}}</textarea>
     </div>
+    {{#each errorMessages}}
+      <div class="alert-danger alert">
+        {{this.msg}}
+      </div>
+    {{/each}}
     <button type="submit" class="btn btn-primary">Submit</button>
   </form>
 </div>

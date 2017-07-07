@@ -5,6 +5,7 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var hbs = require('hbs');
+var validator = require('express-validator');
 
 var index = require('./routes/index');
 var about = require('./routes/about');
@@ -27,6 +28,9 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+// form validation
+app.use(validator());
 
 app.use('/', index);
 app.use('/about', about);
