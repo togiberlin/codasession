@@ -7,11 +7,17 @@ var bodyParser = require('body-parser');
 var hbs = require('hbs');
 var validator = require('express-validator');
 
+var mongoose = require('mongoose');
+var config = require('./config');
+
 var index = require('./routes/index');
 var about = require('./routes/about');
 var contact = require('./routes/contact');
 var login = require('./routes/login');
 var register = require('./routes/register');
+
+mongoose.connect(config.dbConnString, { useMongoClient: true });
+global.User = require('./models/user');
 
 var app = express();
 
