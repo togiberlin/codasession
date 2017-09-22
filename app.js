@@ -8,15 +8,20 @@ var hbs = require('hbs');
 var validator = require('express-validator');
 
 var mongoose = require('mongoose');
+var passport = require('passport');
+var session = require('express-session');
+
+require('./passport');
 var config = require('./config');
 
 var index = require('./routes/index');
+var auth = require('./routes/auth');
 var about = require('./routes/about');
 var contact = require('./routes/contact');
-var login = require('./routes/login');
-var register = require('./routes/register');
 
-mongoose.connect(config.dbConnString, { useMongoClient: true });
+// workaround for Mongoose 4.11.12 https://github.com/Automattic/mongoose/issues/5399
+mongoose.connect(config.dbConnString, { useMongoClient: true, promiseLibrary: global.Promise });
+
 global.User = require('./models/user');
 
 var app = express();
@@ -34,16 +39,27 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
+
+// session configuration
+app.use(session({
+  secret: config.sessionKey,
+  resave: false,
+  saveUninitialized: true,
+  cookie: { secure: true }
+}));
+
+app.use(passport.initialize());
+app.use(passport.session());
+
 app.use(express.static(path.join(__dirname, 'public')));
 
 // form validation
 app.use(validator());
 
 app.use('/', index);
+app.use('/', auth)
 app.use('/about', about);
 app.use('/contact', contact);
-app.use('/login', login);
-app.use('/register', register);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

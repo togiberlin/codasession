@@ -7,8 +7,13 @@
   <br />
   <input type="password" name="password" class="form-control" placeholder="Please enter your password" require="">
   <br />
-  <input type="password" name="confirm-password" class="form-control" placeholder="Please confirm your password" require="">
+  <input type="password" name="confirmPassword" class="form-control" placeholder="Please confirm your password" require="">
   <br />
+  {{#each errorMessages}}
+    <div class="alert-danger alert">
+      {{this.msg}}
+    </div>
+  {{/each}}
   <button type="submit" class="btn btn-lg btn-primary btn-block">Sign up</button>
 
 </form>
