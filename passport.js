@@ -1,5 +1,8 @@
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
+var FacebookStrategy = require('passport-facebook').Strategy;
+
+var config = require('./config');
 
 // Initialize new session, when user logs in
 passport.serializeUser(function(user, done) {
@@ -36,5 +39,42 @@ passport.use(new LocalStrategy({
       // Case 3: username and password correct
       return done(null, user);
     })
+  }
+));
+
+passport.use(new FacebookStrategy({
+    clientID: config.facebook.appID,
+    clientSecret: config.facebook.appSecret,
+    callbackURL: 'http://localhost:3000/auth/facebook/callback',
+    profileFields: ['id', 'displayName', 'email']
+  },
+  function(token, refreshToken, profile, done) {
+    User.findOne({ 'facebookId': profile.id }, function(err, user) {
+      if (err) return done(err);
+
+      if (user) {
+        return done(null, user);
+      } else {
+        debugger;
+        User.findOne({ email: profile.emails[0].value }, function(err, user) {
+          if (user) {
+            user.facebookId = profile.id
+            return user.save(function(err) {
+              if (err) return done(null, false, { message: "Can't save. An error has occurred." } );
+              return done(null, user);
+            })
+          }
+
+          var user = new User();
+          user.name = profile.displayName;
+          user.email = profile.emails[0].value;
+          user.facebookId = profile.id;
+          user.save(function(err) {
+            if (err) return done(null, false, { message: "Can't save. An error has occurred." } );
+            return done(null, user);
+          });
+        });
+      }
+    });
   }
 ));

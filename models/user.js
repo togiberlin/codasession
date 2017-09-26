@@ -12,7 +12,8 @@ var userSchema = new mongoose.Schema({
     required: true
   },
   hash: String,
-  salt: String
+  salt: String,
+  facebookId: String
 });
 
 // Using Crypto library to encrypt Hash and Salt when creating a user
