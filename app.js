@@ -14,15 +14,19 @@ var session = require('express-session');
 require('./passport');
 var config = require('./config');
 
-var index = require('./routes/index');
-var auth = require('./routes/auth');
-var about = require('./routes/about');
-var contact = require('./routes/contact');
+// routefiles
+var indexRoutes = require('./routes/index');
+var authRoutes = require('./routes/auth');
+var sessionRoutes = require('./routes/session');
+var aboutRoutes = require('./routes/about');
+var contactRoutes = require('./routes/contact');
 
 // workaround for Mongoose 4.11.12 https://github.com/Automattic/mongoose/issues/5399
 mongoose.connect(config.dbConnString, { useMongoClient: true, promiseLibrary: global.Promise });
 
+// models
 global.User = require('./models/user');
+global.Session = require('./models/session');
 
 var app = express();
 
@@ -63,10 +67,12 @@ app.use(function(req, res, next) {
 // form validation
 app.use(validator());
 
-app.use('/', index);
-app.use('/', auth)
-app.use('/about', about);
-app.use('/contact', contact);
+// make routes available
+app.use('/', indexRoutes);
+app.use('/', authRoutes);
+app.use('/session', sessionRoutes);
+app.use('/about', aboutRoutes);
+app.use('/contact', contactRoutes);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

@@ -14,9 +14,9 @@ router.get('/newSession', function(req, res) {
   })
 });
 
-router.get('/session/:id', function(req, res) {
+router.get('/:id', function(req, res) {
   if (req.params.id) {
-    Session.findone({ _id: req.params.id }, function(err, data) {
+    Session.findOne({ _id: req.params.id }, function(err, data) {
       if (err) {
         console.log(err);
         res.render('error');
