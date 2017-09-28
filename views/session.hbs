@@ -1,1 +1,20 @@
-<h1>You just created a new session</h1>
+<div>
+  <div class="row">
+    <div class="col-md-8">
+      <textarea id="codeeditor"></textarea>
+    </div>
+    <div class="col-md-4" id="chat">
+      <!-- Chat tbd -->
+    </div>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.30.0/codemirror.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.30.0/mode/javascript/javascript.min.js"></script>
+
+<script>
+  var codeEditor = CodeMirror.fromTextArea(document.getElementById('codeeditor'), {
+    lineNumbers: true,
+    theme: 'rubyblue'
+  });
+</script>
