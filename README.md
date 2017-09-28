@@ -23,9 +23,9 @@ What problems this web platform solves:
 - [Node.js](https://nodejs.org/en/) server side platform
 - [Express.js](http://expressjs.com/) web framework
 - [MongoDB](https://www.mongodb.com/what-is-mongodb) NoSQL database
+- [Mongoose](http://mongoosejs.com/) Object-relational mapper
 - [Handlebars](http://handlebarsjs.com/) HTML templating language
-- [jQuery](https://jquery.com/) JavaScript library
-- [Bootstrap](http://getbootstrap.com/) ready to use HTML and CSS component kit
+- [Bootstrap](http://getbootstrap.com/) ready-to-use HTML and CSS component kit
 
 ## Prerequisites
 - Install a [Node Version Manager (NVM)](https://github.com/creationix/nvm)
