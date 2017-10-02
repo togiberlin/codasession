@@ -12,7 +12,7 @@ This private project is meant to be an exercise on WebSockets and real-time
 page updates.
 
 ## Purpose
-[TBD: Description. Remote work is the future]
+[Description TBD] Open source as the dominating factor for software innovation; however, distributed software development comes with communication challenges - how to cope with them?[/description TBD]
 
 What problems this web platform solves:
 - Conduct real-time remote **pair programming** sessions

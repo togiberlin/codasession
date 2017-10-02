@@ -4,17 +4,67 @@
       <textarea id="codeeditor"></textarea>
     </div>
     <div class="col-md-4" id="chat">
-      <!-- Chat tbd -->
+      <div class="panel panel-primary">
+        <div class="panel-heading">
+          Group Messages
+          <span class="pull-right" id="user-name">
+            {{#if user}}
+              {{user.name}}
+            {{/if}}
+          </span>
+        </div>
+        <div class="panel-body">
+          <ul class="media-list" id="user-messages"></ul>
+        </div>
+        <div class="panel-footer">
+          <div class="input-group">
+            <input type="text" class="form-control" placeholder="Type message here" id="user-send"/>
+            <span class="input-group-btn">
+              <button type="button" class="btn btn-primary" onclick="sendMessage()">SEND</button>
+            </span>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.30.0/codemirror.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.30.0/mode/javascript/javascript.min.js"></script>
+<script src="/socket.io/socket.io.js">
+
+</script>
 
 <script>
+  var socket = io.connect('http://localhost:3000');
   var codeEditor = CodeMirror.fromTextArea(document.getElementById('codeeditor'), {
     lineNumbers: true,
     theme: 'rubyblue'
+  });
+
+  var username = $('#user-name').val();
+
+  if (username === '') {
+    var userId = Math.floor(Math.random() * 4321).toString();
+    username = 'User' + userId;
+    $('#user-name').text(username);
+  };
+
+  var userMessage = function(name, text) {
+    return('<li class="media"><div class="media-body"><div class="media">' +
+      '<div class="media-body">' +
+      '<b>' + name + '</b> : ' + text +
+      '<hr/> </div></div></div></li>'
+    );
+  };
+
+  var sendMessage = function() {
+    var userMessage = $('#user-send').val();
+    socket.emit('chatMessage', { message: userMessage, username: username });
+    $('#user-send').val('');
+  };
+
+  socket.on('chatMessage', function(data) {
+    $('#user-messages').append(userMessage(data.username, data.message));
   });
 </script>

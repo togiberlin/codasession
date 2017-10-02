@@ -3,6 +3,11 @@ body {
   padding: 75px;
 }
 
+#user-messages {
+  height: 300px;
+  overflow-y: scroll;
+}
+
 .form-signin {
   max-width: 330px;
   padding: 15px;
