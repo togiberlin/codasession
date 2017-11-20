@@ -24,6 +24,9 @@ var contactRoutes = require('./routes/contact');
 // Connect to NoSQL DB
 var promise = mongoose.connect(config.dbConnString, {useMongoClient: true});
 
+// Use native promises: http://mongoosejs.com/docs/promises.html
+mongoose.Promise = global.Promise;
+
 // models
 global.User = require('./models/user');
 global.Session = require('./models/session');
