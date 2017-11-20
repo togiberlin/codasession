@@ -31,6 +31,7 @@ What problems this web platform solves:
 - Install a [Node Version Manager (NVM)](https://github.com/creationix/nvm)
 - Download and install Node.js from [here](https://nodejs.org/en/)
 - Alternatively, you can download and install Node.js via ```$ nvm install 8.1.3``` Note: as of July 2017, 8.1.3 is the latest Node.js version.
+- Install [MongoDB](https://www.mongodb.com/) via [Homebrew](https://brew.sh/) ```$ brew install mongodb```
 - Download and install [Robo 3T](https://robomongo.org/) GUI for exploring the database content
 
 ## Setup
