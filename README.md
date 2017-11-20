@@ -34,8 +34,9 @@ What problems this web platform solves:
 - Download and install [Robo 3T](https://robomongo.org/) GUI for exploring the database content
 
 ## Setup
-- Run ```npm install``` to install all dependencies
-- Run ```npm start``` to start the web server
+- Run ```$ npm install``` to install all dependencies
+- Run ```$ npm start``` to start the web server
+- Run ```$ sudo mongod``` to start the NoSQL database
 - Open your web browser and go to ```localhost:3000```
 
 ## Deployment

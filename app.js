@@ -21,8 +21,8 @@ var sessionRoutes = require('./routes/session');
 var aboutRoutes = require('./routes/about');
 var contactRoutes = require('./routes/contact');
 
-// workaround for Mongoose 4.11.12 https://github.com/Automattic/mongoose/issues/5399
-mongoose.connect(config.dbConnString, { useMongoClient: true, promiseLibrary: global.Promise });
+// Connect to NoSQL DB
+var promise = mongoose.connect(config.dbConnString, {useMongoClient: true});
 
 // models
 global.User = require('./models/user');
