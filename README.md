@@ -42,6 +42,3 @@ What problems this web platform solves:
 
 ## Deployment
 [Deployment to Heroku TBD]
-
-## Improvement Points
-[TBD]
