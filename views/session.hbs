@@ -32,15 +32,35 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.30.0/codemirror.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.30.0/mode/javascript/javascript.min.js"></script>
+<script src="/plugins/ot/ot.js"></script>
 <script src="/socket.io/socket.io.js"></script>
 
+</script>
 <script>
+  /** CODE EDITOR FEATURE */
+  var EditorClient = ot.EditorClient;
+  var SocketIOAdapter = ot.SocketIOAdapter;
+  var CodeMirrorAdapter = ot.CodeMirrorAdapter;
+
   var socket = io.connect('http://localhost:3000');
   var codeEditor = CodeMirror.fromTextArea(document.getElementById('codeeditor'), {
     lineNumbers: true,
     theme: 'rubyblue'
   });
 
+  var cmClient;
+  function init(str, revision, clients, serverAdapter) {
+    codeEditor.setValue(str);
+    cmClient = window.cmClient = new EditorClient(
+      revision, clients, serverAdapter, new CodeMirrorAdapter(codeEditor)
+    );
+  };
+
+  socket.on('doc', function(obj) {
+    init(obj.str, obj.revision, obj.clients, new SocketIOAdapter(socket));
+  });
+
+  /** CHAT FEATURE */
   var username = $('#user-name').val();
 
   if (username === '') {
@@ -50,7 +70,7 @@
   };
 
   var roomId = $('#room-id').val();
-  socket.emit('joinRoom', { room: roomId });
+  socket.emit('joinRoom', { room: roomId, username: username });
 
   var userMessage = function(name, text) {
     return('<li class="media"><div class="media-body"><div class="media">' +
