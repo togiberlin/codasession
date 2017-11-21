@@ -28,6 +28,7 @@
     </div>
   </div>
 </div>
+<input type="hidden" value="{{roomId}}" id="room-id">
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.30.0/codemirror.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.30.0/mode/javascript/javascript.min.js"></script>
@@ -47,6 +48,9 @@
     username = 'User' + userId;
     $('#user-name').text(username);
   };
+
+  var roomId = $('#room-id').val();
+  socket.emit('joinRoom', { room: roomId });
 
   var userMessage = function(name, text) {
     return('<li class="media"><div class="media-body"><div class="media">' +

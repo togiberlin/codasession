@@ -16,14 +16,14 @@ router.get('/newSession', function(req, res) {
 
 router.get('/:id', function(req, res) {
   if (req.params.id) {
-    Session.findOne({_id: req.params.id}, function(err, data) {
+    Session.findOne({ _id: req.params.id }, function(err, data) {
       if (err) {
         console.log(err);
         res.render('error');
       }
 
       if (data) {
-        res.render('session', { data: data });
+        res.render('session', { data: data, roomId: data.id });
       } else {
         res.render('error');
       }
