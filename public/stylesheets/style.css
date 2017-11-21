@@ -13,3 +13,39 @@ body {
   padding: 15px;
   margin: 0 auto;
 }
+
+.codemirror {
+  height: 600px;
+}
+
+*, *:before, *after {
+  -moz-box.sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+#own-video-stream {
+  margin-top: 20px;
+  width: 300px;
+  height: auto;
+  background-color: #eeee;
+}
+
+#peer-video-stream {
+  width: 100%;
+  height: 75%;
+  max-height: 500px;
+  background-color: #eeee;
+}
+
+#video-container {
+  text-align: center;
+}
+
+#first-step-error, #second-step, #third-step {
+  display: none;
+}
+
+#own-user-id {
+  font-weight: bold;
+}

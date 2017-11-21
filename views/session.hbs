@@ -5,6 +5,24 @@
     </div>
     <div class="col-md-4" id="chat">
       <div class="panel panel-primary">
+        <!-- VIDEO CALL -->
+        <div id="video-container">
+          <video autoplay id="peer-video-stream"></video>
+          <video autoplay id="own-video-stream" muted="true"></video>
+          <div id="second-step">
+            <p>Your ID: <span id="own-user-id">...</span></p>
+            <div class="form-inline">
+              <input type="text" class="form-control" placeholder="Call User ID..." id="call-id">
+              <a href="#" class="btn btn-sm btn-success" id="call">Begin call</a>
+            </div>
+          </div>
+          <div id="third-step">
+            <p>Talk to <span id="peer-user-id">...</span>
+              <a href="#" class="btn btn-sm btn-danger" id="quit-call">Quit call</a>
+            </p>
+          </div>
+        </div>
+        <!-- CHAT BOX -->
         <div class="panel-heading">
           Group Messages
           <span class="pull-right" id="user-name">
