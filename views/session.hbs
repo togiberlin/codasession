@@ -1,7 +1,7 @@
 <div>
   <div class="row">
     <div class="col-md-8">
-      <textarea id="codeeditor"></textarea>
+      <textarea id="codeeditor">{{sourceCode}}</textarea>
     </div>
     <div class="col-md-4" id="chat">
       <div class="panel panel-primary">
@@ -48,9 +48,14 @@
     theme: 'rubyblue'
   });
 
+  var sourceCode = $('#codeeditor').val();
   var cmClient;
+
   function init(str, revision, clients, serverAdapter) {
-    codeEditor.setValue(str);
+    if (!sourceCode) {
+      codeEditor.setValue(str);
+    }
+
     cmClient = window.cmClient = new EditorClient(
       revision, clients, serverAdapter, new CodeMirrorAdapter(codeEditor)
     );

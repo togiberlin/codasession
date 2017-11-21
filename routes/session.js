@@ -23,7 +23,7 @@ router.get('/:id', function(req, res) {
       }
 
       if (data) {
-        res.render('session', { data: data, roomId: data.id });
+        res.render('session', { sourceCode: data.sourceCode, roomId: data.id });
       } else {
         res.render('error');
       }

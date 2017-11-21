@@ -13,7 +13,12 @@ module.exports = function(server) {
     socket.on('joinRoom', function(data) {
       if (!roomList[data.room]) {
         var socketIOServer = new ot.EditorSocketIOServer(str, [], data.room, function(socket, cb) {
-          cb(true);
+          var self = this;
+
+          Session.findByIdAndUpdate(data.room, { sourceCode: self.document }, function(err) {
+            if (err) return cb(false);
+            cb(true);
+          });
         });
         roomList[data.room] = socketIOServer;
       }
