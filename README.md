@@ -36,6 +36,7 @@ What problems this web platform solves:
 
 ## Setup
 - Run ```$ npm install``` to install all dependencies
+- _Optional: configure the GMail mailer service and Facebook-login under_ ```config.js```
 - Run ```$ npm start``` to start the web server
 - Run ```$ sudo mongod``` to start the NoSQL database
 - Open your web browser and go to ```localhost:3000```
