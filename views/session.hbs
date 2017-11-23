@@ -17,7 +17,7 @@
             </div>
           </div>
           <div id="third-step">
-            <p>Talk to <span id="peer-user-id">...</span>
+            <p>Talking to <span id="peer-user-id">...</span>
               <a href="#" class="btn btn-sm btn-danger" id="quit-call">Quit call</a>
             </p>
           </div>
@@ -52,6 +52,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.30.0/mode/javascript/javascript.min.js"></script>
 <script src="/plugins/ot/ot.js"></script>
 <script src="/socket.io/socket.io.js"></script>
+<script src="http://cdn.peerjs.com/0.3/peer.js"></script>
 
 </script>
 <script>
@@ -112,4 +113,73 @@
   socket.on('chatMessage', function(data) {
     $('#user-messages').append(userMessage(data.username, data.message));
   });
+
+  /** PEERJS VIDEO CALL FEATURE */
+  // Compatibility shim
+  navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
+  // PeerJS object
+  var peer = new Peer(username + roomId, {key: 'hceptospahlac3di'});
+
+  peer.on('open', function(){
+    $('#own-user-id').text(peer.id);
+  });
+  // Receiving a call
+  peer.on('call', function(call){
+    // Answer the call automatically (instead of prompting user) for demo purposes
+    call.answer(window.localStream);
+    thirdStep(call);
+  });
+  peer.on('error', function(err){
+    alert(err.message);
+    // Return to step 2 if error occurs
+    secondStep();
+  });
+  // Click handlers setup
+  $(function(){
+    $('#call').click(function(){
+      // Initiate a call!
+      var call = peer.call($('#call-id').val(), window.localStream);
+      thirdStep(call);
+    });
+    $('#quit-call').click(function(){
+      window.existingCall.close();
+      secondStep();
+    });
+    // Retry if getUserMedia fails
+    $('#step1-retry').click(function(){
+      $('#step1-error').hide();
+      step1();
+    });
+    // Get things started
+    step1();
+  });
+  function step1 () {
+    // Get audio/video stream
+    navigator.getUserMedia({audio: true, video: true}, function(stream){
+      // Set your video displays
+      $('#own-video-stream').prop('src', URL.createObjectURL(stream));
+      window.localStream = stream;
+      secondStep();
+    }, function(){ $('#step1-error').show(); });
+  }
+  function secondStep () {
+    $('#third-step').hide();
+    $('#second-step').show();
+  }
+  function thirdStep (call) {
+    // Hang up on an existing call if present
+    if (window.existingCall) {
+      window.existingCall.close();
+    }
+    // Wait for stream on the call, then set peer video display
+    call.on('stream', function(stream){
+      $('#peer-video-stream').prop('src', URL.createObjectURL(stream));
+    });
+    // UI stuff
+    window.existingCall = call;
+    $('#peer-user-id').text(call.peer);
+    call.on('close', secondStep);
+    $('#second-step').hide();
+    $('#third-step').show();
+  }
 </script>
