@@ -22,7 +22,7 @@ var aboutRoutes = require('./routes/about');
 var contactRoutes = require('./routes/contact');
 
 // Connect to NoSQL DB
-var promise = mongoose.connect(config.dbConnString, {useMongoClient: true});
+var promise = mongoose.connect(config.mongoDB.dbConnString, {useMongoClient: true});
 
 // Use native promises: http://mongoosejs.com/docs/promises.html
 mongoose.Promise = global.Promise;
@@ -49,7 +49,7 @@ app.use(cookieParser());
 
 // session configuration
 app.use(session({
-  secret: config.sessionKey,
+  secret: config.mongoDB.sessionKey,
   resave: false,
   saveUninitialized: true
 }));
