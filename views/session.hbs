@@ -118,7 +118,15 @@
   // Compatibility shim
   navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
   // PeerJS object
-  var peer = new Peer(username + roomId, {key: 'hceptospahlac3di'});
+  var peer = new Peer(username + roomId, {
+    // When deploying to production, uncomment the following lines! Update the key if necessary.
+    //host: 'example-12345.herokuapp.com',
+    //path: '/peerjs',
+    //port: 443,
+    //secure: true,
+    key: 'hceptospahlac3di'//,
+    //debug: true
+  });
 
   peer.on('open', function(){
     $('#own-user-id').text(peer.id);

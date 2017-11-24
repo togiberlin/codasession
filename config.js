@@ -14,6 +14,7 @@ module.exports = {
   },
   facebook: {
     appID: 'APP_ID_HERE',
-    appSecret: 'APP_SECRET_HERE'
+    appSecret: 'APP_SECRET_HERE',
+    callbackURL: 'http://localhost:3000/auth/facebook/callback'
   }
 }

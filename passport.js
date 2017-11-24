@@ -45,7 +45,7 @@ passport.use(new LocalStrategy({
 passport.use(new FacebookStrategy({
     clientID: config.facebook.appID,
     clientSecret: config.facebook.appSecret,
-    callbackURL: 'http://localhost:3000/auth/facebook/callback',
+    callbackURL: config.facebook.callbackURL,
     profileFields: ['id', 'displayName', 'email']
   },
   function(token, refreshToken, profile, done) {
