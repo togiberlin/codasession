@@ -2,26 +2,35 @@
 ![Remote work](http://i.imgur.com/6jxMK1n.png)
 
 In simple words, CodaSession is like GoogleDocs for programmers.
-It allows you to work collaboratively on code with fellow engineers - no matter
-where you live. For communication, CodaSession allows users to use a chat window.
-Furthermore, it is very easy to exchange ideas via integrated video calls.
+It allows you to work collaboratively on code with fellow engineers - no matter where you live.
 
 > CodaSession is meant to reduce barriers for effective remote work.
 
-This private project is meant to be an exercise on WebSockets and real-time
-page updates.
+This private project is meant to be an exercise on [WebSockets](https://en.wikipedia.org/wiki/WebSocket) and real-time page updates.
 
 ## Purpose
-[Description TBD] Open source as the dominating factor for software innovation; however, distributed software development comes with communication challenges - how to cope with them?[/description TBD]
+In the last couple years, open source has become the dominating factor for software innovation. However, this was not always the case. In earlier times, distributed software development couldn't cope with issues like:
 
-What problems this web platform solves:
-- Conduct real-time remote **pair programming** sessions
-- Conduct real-time remote **tutoring** sessions
-- Conduct real-time remote **coding interviews**
+- Slow dialup internet
+- Immature web technologies
+- Missing project management tools
+
+The first two ones aren't issues anymore. The third issue, missing PM tools, is still highly relevant. Many development platforms like GitHub or BitBucket only allow asynchronous collaboration. Engineers usually do Pull-Requests ("PRs") and post comments.
+
+This is however quite slow. Sometimes, replies to comments can take days. For quick experiments, code-fiddling or hypothesis-testing, a PR feels unnatural. Sometimes, you just want a quick pair programming session.
+
+This is where CodaSession comes into play. CodaSession is a web platform, which allows to:
+- Conduct real-time, remote **pair programming** sessions
+- Conduct real-time, remote **tutoring** sessions
+- Conduct real-time, remote **coding interviews**
+
+Communication is kept as natural as possible by a video call feature. A chat window assists for exchanging code snippets, links and so on.
 
 ## Technology Stack
 - [Node.js](https://nodejs.org/en/) server side platform
 - [Express.js](http://expressjs.com/) web framework
+- [Socket.io](https://socket.io/) for real-time webpage updates
+- [Passport.js](http://www.passportjs.org/) authentication
 - [MongoDB](https://www.mongodb.com/what-is-mongodb) NoSQL database
 - [Mongoose](http://mongoosejs.com/) Object-relational mapper
 - [Handlebars](http://handlebarsjs.com/) HTML templating language
@@ -35,7 +44,7 @@ What problems this web platform solves:
 - Download and install [Robo 3T](https://robomongo.org/) GUI for exploring the database content
 - Open now the Robo 3T application, and create a MongoDB database. Enter your database configuration settings under ```config.js:11```.
 
-## Setup
+## Running the App Locally
 - Run ```$ npm install``` to install all dependencies
 - Run ```$ npm start``` to start the web server
 - Run ```$ sudo mongod``` to start the NoSQL database
