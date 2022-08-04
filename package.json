@@ -13,7 +13,7 @@
     "express-session": "^1.15.1",
     "express-validator": "^3.2.0",
     "hbs": "~4.0.1",
-    "mongoose": "^4.13.4",
+    "mongoose": "^5.7.5",
     "morgan": "~1.8.1",
     "nodemailer": "^4.0.1",
     "ot": "git+https://github.com/Operational-Transformation/ot.js.git",
